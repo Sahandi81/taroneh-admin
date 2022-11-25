@@ -2,7 +2,7 @@
   "name": "taroneh-admin",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 5177",
+    "dev": "next dev",
     "build": "next build",
     "start": " node server.js"
   },
