@@ -174,6 +174,8 @@ export default function Orders({ header,header2,header3 }) {
                 <option value="paid">پرداخت شده ها</option>
                 <option value="unpaid">پرداخت نشده ها</option>
                 <option value="failed">انجام نشده ها</option>
+                <option value="">همه</option>
+
             </select>}
       <Table
         header={selectHeader}

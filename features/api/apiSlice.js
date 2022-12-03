@@ -17,7 +17,7 @@ export const apiSlice = createApi({
     }),
     getOrders: builder.query({
       query: ({page, perPage , status}) =>
-        `api/orders?status=${status}&page=${page}&per_page=${perPage}`,
+        `api/orders?${status!== ''?"status="+status:''}&page=${page}&per_page=${perPage}`,
       transformResponse: response => ({
         success: response.data.success,
         orders: response.data.details.data,
