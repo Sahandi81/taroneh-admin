@@ -894,7 +894,7 @@ export default function AddProduct() {
            <button type='button' onClick={()=>setAmazing(!amazing)}
            style={{padding:'.5rem 1.8rem', borderRadius:'4px',}}
            className={!amazing?"text-white bg-emerald-400 "
-           :"text-white bg-red-400"}>{amazing?"حذف از پیشنهاد شگفت انگیز":" اضافه کردن به پشنهادات شگفت انگیز "}</button>
+           :"text-white bg-red-400"}>{amazing?"حذف از پیشنهاد شگفت انگیز":" اضافه کردن به پیشنهادات شگفت انگیز "}</button>
         </div>
         <hr className='lg:row-start-16 lg:col-span-full my-5' />
         
@@ -916,7 +916,7 @@ export default function AddProduct() {
            style={{padding:'.5rem 1.8rem', borderRadius:'4px',whiteSpace:'nowrap', marginLeft:'1rem'}}
            className={!catering?"text-white bg-emerald-400 ":"text-white bg-red-400"} 
            onClick={()=>{setCatering(e=>!e);
-            }}>{catering?"حذف از محصولات پذیرایی":"اضافه کردن به محصولات پزیرایی"}</button>
+            }}>{catering?"حذف از محصولات پذیرایی":"اضافه کردن به محصولات پذیرایی"}</button>
         
         </div>
         <hr className='lg:row-start-18 lg:col-span-full my-5' />

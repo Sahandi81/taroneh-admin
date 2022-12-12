@@ -45,7 +45,7 @@ function classNames(...classes) {
 const rankList = [{ name: 'درجه 1' }, { name: 'درجه 2' }];
 
 export default function EditProduct({ product }) {
-  console.log(product)
+  console.log(product, 'vali')
   const [currentProduct, setCurrentProduct] = useState({
     id: product._id,
     title: product.title,
@@ -299,6 +299,7 @@ export default function EditProduct({ product }) {
   if (isLoading) {
     return <div>...Loading</div>;
   }
+  console.log(data, 'ali man')
 
   if (error) {
     return <div>Error</div>;
@@ -605,6 +606,7 @@ export default function EditProduct({ product }) {
     setTimeout(() => setLoading(false), 200);
     // window.location.reload()
   };
+  console.log(currentImageURLs, 'imageURLs')
 
   return (
     <div className='flex flex-col bg-white rounded-lg p-6 pb-10 shadow-lg shadow-slate-400/10'>
@@ -957,6 +959,7 @@ export default function EditProduct({ product }) {
                   alt='Product Image'
                   width={100}
                   height={100}
+                  
                 />
               </div>
             ))}
@@ -989,26 +992,28 @@ export default function EditProduct({ product }) {
            <button type='button' onClick={()=>{setAmazing(!amazing);
           // add_ammazingOfferHandller();
           // add_ammazingOfferHandller('ddh')
+         
         }}
            style={{padding:'.5rem 1.8rem', borderRadius:'4px',}}
            className={!amazing?"text-white bg-emerald-400 "
-           :"text-white bg-red-400"}>{amazing?"حذف از پیشنهاد شگفت انگیز":" اضافه کردن به پشنهادات شگفت انگیز "}</button>
+           :"text-white bg-red-400"}>{amazing?"حذف از پیشنهاد شگفت انگیز":" اضافه کردن به پیشنهادات شگفت انگیز "}</button>
         </div>
         <hr className='lg:row-start-16 lg:col-span-full my-5' />
-        
+        {/* {!amazing?<> */}
         <div className='lg:row-start-17 flex ' >
-          <button type='button' 
+         <button type='button' 
            style={{padding:'.5rem 1.8rem', borderRadius:'4px',whiteSpace:'nowrap', marginLeft:'1rem'}}
            className={offerShow?"text-white bg-emerald-400 ":"text-white bg-red-400"} 
            onClick={()=>{
             //  setOfferShow(e=>!e);
-            }}>{offerShow?"":"اضافه کردن تخفیف"}</button>
-           {!offerShow &&<input type="number" style={{padding:".5rem"}}
+            }}>اضافه کردن تخفیف</button>
+           <input type="number" style={{padding:".5rem"}}
             className='bg-white  border-2 border-black text-black' min={0} max={100}
             onChange={(e)=>{setOffer(e.target.value);setCurrentProduct({...currentProduct, amount:
-             e.target.value})}} value={offer}/>}
+             e.target.value})}} value={offer}/>
         </div> 
         <hr className='lg:row-start-18 lg:col-span-full my-5' />
+        {/* </>:null} */}
         <div className='lg:row-start-19'>
           <button type='button' onClick={()=>{
               setSpecialSale(e=>!e);
@@ -1023,7 +1028,7 @@ export default function EditProduct({ product }) {
            style={{padding:'.5rem 1.8rem', borderRadius:'4px',whiteSpace:'nowrap', marginLeft:'1rem'}}
            className={!catering?"text-white bg-emerald-400 ":"text-white bg-red-400"} 
            onClick={()=>{setCatering(e=>!e);
-            }}>{catering?"حذف از محصولات پذیرایی":"اضافه کردن به محصولات پزیرایی"}</button>
+            }}>{catering?"حذف از محصولات پذیرایی":"اضافه کردن به محصولات پذیرایی"}</button>
         
         </div>
         {/* <hr className='lg:row-start-19 lg:col-span-full my-5' /> */}

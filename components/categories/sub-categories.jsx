@@ -12,11 +12,12 @@ import DeleteSubCategoryModal from './delete-sub-category-modal';
 import { SUBCATEGORY_DELETED_SUCCESSFULLY } from '@/data/messages';
 import {
   useGetSubCategoriesQuery,
-  useDeleteSubCategoryMutation
+  useDeleteSubCategoryMutation,
+  useGetCategoriesQuery
 } from '@/features/api/apiSlice';
 import { calender } from '@/data/calender';
 
-export default function SubCategories({ header }) {
+export default function SubCategories({ header, mainCategories }) {
   const [openAddSub, setOpenAddSub] = useState(false);
   const [openEditSub, setOpenEditSub] = useState(false);
   const [currentItem, setCurrentItem] = useState(null);
@@ -30,20 +31,21 @@ export default function SubCategories({ header }) {
     error,
     isLoading: isLoadingSubCategory
   } = useGetSubCategoriesQuery(page, perPage);
-
+  
   const [deleteSubCategory, { isLoading: isLoadingDelete }] =
     useDeleteSubCategoryMutation();
 
-  const memoizedSubCategories = useMemo(() => {
-    if (data) {
-      const items = data.items;
-      const subCategoriesList = [...Array(items.length)];
+    
+    const memoizedSubCategories = useMemo(() => {
+      if (data) {
+        const items = data.items;
+        const subCategoriesList = [...Array(items.length)];
       for (let i = 0; i < items.length; i++) {
         subCategoriesList[i] = {
           id: items[i]._id,
-          name: items[i].name,
+          name:  mainCategories.filter(el=>el._id === items[i].category_id)[0]?.name,
           categoryId: items[i].category_id,
-          categoryName: items[i].category_id,
+          categoryName:  items[i].name,
           createdOn: calender(items[i].created_at) 
           // moment(items[i].created_at)
           //   .locale('fa')

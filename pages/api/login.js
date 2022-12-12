@@ -5,9 +5,8 @@ export default async function login(req, res) {
   
   if (req.method === 'POST') {
     const { username, password } = req.body;
-    
     let bodyData = {};
-    // console.log(API_URL, username, password)
+    console.log(API_URL, username, password)
     if (username.includes('@')) {
       bodyData = { email: username, password };
     } else {
@@ -25,7 +24,7 @@ export default async function login(req, res) {
 
     const data = await backendRes.json();
 
-    console.log(data);
+    console.log(data, 'data');
     if (backendRes.ok) {
       // Set cookie
       await res.setHeader(

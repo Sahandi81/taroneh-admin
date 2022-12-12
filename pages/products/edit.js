@@ -3,7 +3,7 @@ import EditProduct from '@/components/products/edit-product';
 import { API_URL } from '@/config/index';
 
 export default function AddProductPage({ data }) {
-  // console.log(data)
+  // console.log(data, 'vali mansouri')
   return (
     <Layout>
       <EditProduct product={data} />

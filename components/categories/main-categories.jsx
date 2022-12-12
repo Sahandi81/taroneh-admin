@@ -18,7 +18,7 @@ import {
 } from "@/features/api/apiSlice";
 import { calender } from "@/data/calender";
 
-export default function MainCategories({ header }) {
+export default function MainCategories({ header , data, error, isLoadingCategory}) {
 	const [openAddMain, setOpenAddMain] = useState(false);
 	const [openEditMain, setOpenEditMain] = useState(false);
 	const [currentItem, setCurrentItem] = useState(null);
@@ -29,11 +29,11 @@ export default function MainCategories({ header }) {
 
 	const dispatch = useDispatch();
 
-	const {
-		data,
-		error,
-		isLoading: isLoadingCategory,
-	} = useGetCategoriesQuery(page, perPage);
+	// const {
+	// 	data,
+	// 	error,
+	// 	isLoading: isLoadingCategory,
+	// } = useGetCategoriesQuery(page, perPage);
 
 	const [deleteCategory, { isLoadingDelete }] = useDeleteCategoryMutation();
 	
