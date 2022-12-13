@@ -13,7 +13,7 @@ export default async function getOrders(req, res) {
     const { token } = cookie.parse(req.headers.cookie);
     console.log( token, status, page, per_page, req.query)
     const backendRes = await fetch(
-      `${API_URL}/api/admin/orders?q=${status}&page=${page}&per_page=${per_page}`,
+      `${API_URL}/api/admin/orders?${status && status !== ''?'q='+status+'&':''}page=${page}&per_page=${per_page}`,
       {
         method: 'GET',
         headers: {
