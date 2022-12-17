@@ -21,7 +21,7 @@ export default function Home({ cards }) {
   // const admin = useSelector(selectAdmin);
   const {data} = useGetDashboardQuery()
   
-  
+  console.log(data)
   // if (!admin) {
   //   setTimeout(() => router.push('/login'), 200);
   //   return <Spinner />;

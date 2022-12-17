@@ -6,7 +6,7 @@ import { FaTimes, FaRegSave } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import cn from 'classnames';
-import React_star from 'react-star-ratings';
+// import React_star from 'react-star-ratings';
 import Spinner from '../ui/spinner';
 import Input from '../ui/input';
 import SelectBox from '../ui/select-box';
@@ -30,7 +30,7 @@ import {
 } from '@/data/messages';
 import { selectUploadImageToken } from '@/features/admin/adminSlice';
 import { API_URL } from '@/config/index';
-import axios from 'axios';
+// import axios from 'axios';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -145,11 +145,11 @@ export default function AddProduct() {
     setImageURLs(tempURLs);
   }, [images]);
 
+  
   const { data, error, isLoading } = useGetAllCategoriesQuery();
-  // console.log(data)
+  
   const [addProduct, { isLoading: isLoadingAddProduct }] =
     useAddProductMutation();
-  
    
 
   const memoizedSubCategories = useMemo(() => {

@@ -14,9 +14,9 @@ export default async function categories(req, res) {
     });
 
     const data = await backendRes.json();
-
+    console.log(data)
     if (backendRes.ok) {
-      res.status(200).json({ data });
+      res.status(200).json({ data:data });
     } else {
       res
         .status(backendRes.status)

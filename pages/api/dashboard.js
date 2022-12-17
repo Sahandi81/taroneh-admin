@@ -28,7 +28,7 @@ export default async function Dashboard(req, res) {
     });
 
     const data = await backendRes.json();
-    console.log(data);
+    console.log(token);
     if (backendRes.ok) {
       res.status(200).json({ data });
     } else {

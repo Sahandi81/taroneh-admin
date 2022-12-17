@@ -41,8 +41,7 @@ export const apiSlice = createApi({
       providesTags: ['Category']
     }),
     getAllCategories: builder.query({
-      query: () =>
-        `api/categories/all`,
+      query: () =>`api/categories/all`,
       transformResponse: response => {
         return {
           success: response.data.success,
@@ -378,9 +377,9 @@ export const {
   useGetOrdersQuery,
   useGetUsersQuery,
   useGetUserByIdQuery,
+  useGetAllCategoriesQuery,
   useGetBlogPostsQuery,
   useGetSinglePostQuery,
-  useGetAllCategoriesQuery,
   useGetDashboardQuery,
   useAddCategoryMutation,
   useUpdateCategoryMutation,
