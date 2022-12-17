@@ -45,7 +45,7 @@ function classNames(...classes) {
 const rankList = [{ name: 'درجه 1' }, { name: 'درجه 2' }];
 
 export default function EditProduct({ product }) {
-  console.log(product, 'vali')
+  
   const [currentProduct, setCurrentProduct] = useState({
     id: product._id,
     title: product.title,
@@ -64,7 +64,7 @@ export default function EditProduct({ product }) {
     attributes: product.attributes,
     photos: product.photos
   });
-  console.log(product)
+
   const [type50, setType50] = useState(
     Boolean(product.types[0][0]['package']['50']) || false
   );
@@ -132,6 +132,7 @@ export default function EditProduct({ product }) {
   const [attr5, setAttr5] = useState(product.attributes[4] || '');
 
   const [images, setImages] = useState([]);
+  const [ArrImgRm, setArrImgRm] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -299,7 +300,7 @@ export default function EditProduct({ product }) {
   if (isLoading) {
     return <div>...Loading</div>;
   }
-  console.log(data, 'ali man')
+  
 
   if (error) {
     return <div>Error</div>;
@@ -367,14 +368,22 @@ export default function EditProduct({ product }) {
 
   const handleDeleteImage = imgId => {
     setImages(prevImages => prevImages.filter(image => image.id !== imgId));
+    
+    // setArrImgRm()
   };
-
+  
   const handleDeleteCurrentImage = img => {
     const imgName = img.split('/')[5];
+    
+
     setCurrentImages(prevImages =>
       prevImages.filter(image => image !== imgName)
     );
+    const arrRm = ArrImgRm;
+    arrRm.push(img)
+    setArrImgRm(arrRm);
   };
+  
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -559,10 +568,20 @@ export default function EditProduct({ product }) {
     }
 
     newProduct.photos = currentProduct.photos.concat(uploadedImageNames.slice());
-   
+      
+    if(ArrImgRm.length > 0){
+      newProduct.photos.map((el, index)=>{
+          ArrImgRm.map(er=>{
+            er = er.replace('https://api.taroneh.ir/storage/'+ newProduct.code+'/','')
+            if(er === el){
+              newProduct.photos.pop(index)
+            }
+          })
+      })
+    }
     
       newProduct.amount = offer;
-    
+    // console.log(newProduct, 'new prod', ArrImgRm.length)
     editProduct(newProduct)
       .unwrap()
       .then(({ data }) => {
@@ -606,7 +625,7 @@ export default function EditProduct({ product }) {
     setTimeout(() => setLoading(false), 200);
     // window.location.reload()
   };
-  console.log(currentImageURLs, 'imageURLs')
+  // console.log(currentImageURLs, 'imageURLs')
 
   return (
     <div className='flex flex-col bg-white rounded-lg p-6 pb-10 shadow-lg shadow-slate-400/10'>
@@ -651,7 +670,7 @@ export default function EditProduct({ product }) {
           </div>
         </div>
 
-        <div className='lg:row-start-2'>
+        <div className='lg:row-start-2' style={{marginRight:'3rem'}}>
           <SelectBox
             title='زیر شاخه'
             items={memoizedSubCategories}
