@@ -127,7 +127,7 @@ export default function BlogPosts({header}) {
                 {memoizedPosts.map((post, idx) => (
                     <tr key={idx} className='even:bg-gray-100'>
                         <td className='py-3 px-4 text-stone-600 font-semibold border border-gray-200'>
-                            <Image src={`/storage/blog/${post.photo}`} alt={post.title} layout="responsive" width={120}
+                            <Image src={`/storage/${post.photo}`} alt={post.title} layout="responsive" width={120}
                                    height={80} loader={customLoader}/>
                         </td>
                         <td className='py-3 px-4 text-stone-600 font-semibold border border-gray-200'>

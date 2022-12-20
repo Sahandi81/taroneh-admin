@@ -37,6 +37,7 @@ import { selectUploadImageToken } from '@/features/admin/adminSlice';
 import Spinner from '../ui/spinner';
 import { API_URL, NEXT_URL } from '@/config/index';
 import axios from 'axios';
+import { removeFristZeros } from '@/data/removeFristZeros';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -250,6 +251,10 @@ export default function EditProduct({ product }) {
     setOfferShow(amazing?true:offerShow)
   },[amazing])
 
+
+    
+
+  console.log(product)
   useEffect(() => {
     const tempURLs = [];
     currentImages.forEach(
@@ -570,16 +575,18 @@ export default function EditProduct({ product }) {
     newProduct.photos = currentProduct.photos.concat(uploadedImageNames.slice());
       
     if(ArrImgRm.length > 0){
-      newProduct.photos.map((el, index)=>{
+      // newProduct.photos.map((el, index)=>{
+
           ArrImgRm.map(er=>{
             er = er.replace('https://api.taroneh.ir/storage/'+ newProduct.code+'/','')
-            if(er === el){
-              newProduct.photos.pop(index)
-            }
+            // if(er === el){
+              // newProduct.photos.pop(Number(index) )
+              newProduct.photos = newProduct.photos.filter(mp=> mp !== er )
+            // }
           })
-      })
+      // })
     }
-    
+    console.log(newProduct.photos, 'newProduct photos')
       newProduct.amount = offer;
     // console.log(newProduct, 'new prod', ArrImgRm.length)
     editProduct(newProduct)

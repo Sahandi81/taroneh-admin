@@ -17,6 +17,7 @@ export async function getServerSideProps({ query, req }) {
       notFound: true
     };
   }
+  console.log(cookie.parse(req.headers.cookie).token)
 
   const { id } = query;
   const { token } = cookie.parse(req.headers.cookie);
@@ -27,9 +28,9 @@ export async function getServerSideProps({ query, req }) {
       Authorization: `Bearer ${token}`
     }
   });
-
   if (response.ok) {
     const data = await response.json();
+    // console.log(data)
 
     if (data.success) {
       const order = data.details;
@@ -45,13 +46,13 @@ export async function getServerSideProps({ query, req }) {
             address: order.address,
             users: order.users,
               order_address: order.order_address,
-            products: order.products.map((prd, idx) => ({
+            products: order.products?.map((prd, idx) => ({
               id: prd.id?.concat(idx),
-              title: prd.type.name,
-              type: prd.type.package,
-              weight: prd.type.number,
-              price: prd.type.price,
-              totalPrice: prd.type.number * prd.type.price,
+              title: prd.type?.name,
+              type: prd.type?.package,
+              weight: prd.type?.number,
+              price: prd.type?.price,
+              totalPrice: prd.type?.number * prd.type?.price,
               
             }))
           }

@@ -92,7 +92,7 @@ export default function AddPostsForm({ postData }) {
 
 	useEffect(() => {
 		if (postData && postData._id)
-			setImageURLs([{ id: postData._id, url: postData.photo[0] }]);
+			setImageURLs([{ id: postData._id, url: postData?.photo?postData?.photo[0]:'' }]);
 	}, [postData]);
 
 	const handleChange = (e) => {
