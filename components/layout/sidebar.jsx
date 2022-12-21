@@ -104,12 +104,12 @@ Sidebar.defaultProps = {
       route: '/incredible-offers',
       icon: <FaGrinStars size={25} />
     },
-    {
-      id: 'special-sells',
-      title: 'فروش ویژه',
-      route: '/special-sells',
-      icon: <FaGrinStars size={25} />
-    },
+    // {
+    //   id: 'special-sells',
+    //   title: 'فروش ویژه',
+    //   route: '/special-sells',
+    //   icon: <FaGrinStars size={25} />
+    // },
     {
       id: 'products',
       title: 'محصولات',
