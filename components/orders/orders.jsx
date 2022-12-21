@@ -16,7 +16,7 @@ export default function Orders({ header,header2,header3 }) {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(5);
   const [lastPage, setLastPage] = useState(1);
-  const [status, setStatus] = useState('paid')
+  const [status, setStatus] = useState('')
   const [openDeleteOrderModal, setOpenDeleteOrderModal] = useState(false);
   const [deleteUser] = useDeleteUserMutation();
   
@@ -26,7 +26,7 @@ export default function Orders({ header,header2,header3 }) {
   let selectFunc;
   let selectHeader;
   
-  console.log(router.pathname)
+  // console.log(router.pathname)
     switch(router.pathname){
       case '/customers':
         selectFunc = useGetUsersQuery(page, perPage);
@@ -171,10 +171,10 @@ export default function Orders({ header,header2,header3 }) {
       {window.location.pathname === '/orders' && <select 
         style={{width:'10rem' ,height:'2.5rem', margin:'1rem', fontSize:'1rem', borderRadius:'8px',boxShadow:'0 3px 4px #111'}}
         onClick={statusHandller}>
+                <option value="">همه</option>
                 <option value="paid">پرداخت شده ها</option>
                 <option value="unpaid">پرداخت نشده ها</option>
                 <option value="failed">انجام نشده ها</option>
-                <option value="">همه</option>
 
             </select>}
       <Table

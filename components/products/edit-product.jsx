@@ -88,10 +88,10 @@ export default function EditProduct({ product }) {
     Boolean(product.types[0][0]['package']['1200']) || false
   );
   const [typePack, setTypePack] = useState(
-    Boolean(product.types[0][0]['package']['package']) || false
+    Boolean(product.types[0][0]['package']['Pack']) || false
   );
   const [typeOne, setTypeOne] = useState(
-    Boolean(product.types[0][0]['package']['one']) || false
+    Boolean(product.types[0][0]['package']['One']) || false
   );
 
   const [price50, setPrice50] = useState(
@@ -116,10 +116,10 @@ export default function EditProduct({ product }) {
     product.types[0][0]['package']['1200'] || ''
   );
   const [pricePack, setPricePack] = useState(
-    product.types[0][0]['package']['package'] || ''
+    product.types[0][0]['package']['Pack'] || ''
   );
   const [priceOne, setPriceOne] = useState(
-    product.types[0][0]['package']['one'] || ''
+    product.types[0][0]['package']['One'] || ''
   );
 
   const [inventory, setInventory] = useState(
@@ -1047,6 +1047,7 @@ export default function EditProduct({ product }) {
            style={{padding:'.5rem 1.8rem', borderRadius:'4px',}}
            className={!specialSale ?"text-white bg-emerald-400 "
            :"text-white bg-red-400"}>{!specialSale?" اضافه کردن به فروش ویژه":"حذف از فروش ویژه"}</button>
+           {/* <input type="number" className='bg-red-300 w-30' /> */}
         </div>
         <hr className='lg:row-start-20 lg:col-span-full my-5' />
         <div className='lg:row-start-21 flex ' >

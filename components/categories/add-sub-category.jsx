@@ -73,7 +73,9 @@ export default function AddSubCategory({ isOpen, closeModal }) {
     }
 
     const photos = uploadedImageNames.slice();
-
+    console.log({category_id: mainId,
+      name: sub.value,
+      photos})
     try {
       const result = await addSubCategory({
         category_id: mainId,

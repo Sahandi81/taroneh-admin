@@ -95,11 +95,11 @@ export default function SubCategories({ header, mainCategories }) {
       .unwrap()
       .then(data => {
         // console.log(data);
-        if (data.success) {
+        // if (data.success) {
           toast.success(CATEGORY_DELETED_SUCCESSFULLY);
-        } else {
-          toast.error(data.message || 'Error in deleting sub category');
-        }
+        // } else {
+        //   toast.error(data.message || 'Error in deleting sub category');
+        // }
       })
       .catch(error => {
         toast.error(error?.data?.message || 'Error in deleting sub category');

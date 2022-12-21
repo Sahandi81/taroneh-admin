@@ -174,6 +174,12 @@ export const apiSlice = createApi({
          transformResponse: response => response.data,
       invalidatesTags: ['Offer']
     }),
+    getSpecialSell: builder.query({
+      query: () => 
+         'api/offer/specialSell',
+         transformResponse: response => response.data,
+      invalidatesTags: ['Offer']
+    }),
     editProduct: builder.mutation({
       query: product => ({
         url: 'api/products/edit',
@@ -402,6 +408,7 @@ export const {
     useAddAmazingOfferMutation,
     useUpdateAmazingOfferMutation,
     useGetAmazingOfferQuery,
+    useGetSpecialSellQuery,
     useAddOfferMutation,
     useDeleteCateringMutation,
     useAddCateringMutation,
