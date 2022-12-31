@@ -29,7 +29,7 @@ import {
   PRODUCT_ADDED_SUCCESSFULLY
 } from '@/data/messages';
 import { selectUploadImageToken } from '@/features/admin/adminSlice';
-import { API_URL } from '@/config/index';
+import { API_URL, NEXT_URL } from '@/config/index';
 // import axios from 'axios';
 
 function classNames(...classes) {
@@ -397,7 +397,7 @@ export default function AddProduct() {
     };
 
     const uploadedImageNames = [];
-
+    console.log(images)
     try {
       setLoading(true);
       for (let i = 0; i < images.length; i++) {
@@ -406,7 +406,7 @@ export default function AddProduct() {
         formdata.append('type', images[i].file.type);
         formdata.append('name', images[i].file.name);
         const result = await fetch(
-          `${API_URL}/api/admin/upload_photo`,
+          `${API_URL}/api/upload_photo`,
           {
             method: 'POST',
             headers: {
@@ -417,6 +417,7 @@ export default function AddProduct() {
           }
         );
         const data = await result.json();
+        console.log(data, 'udgyudsygyugy')
         uploadedImageNames.push(data.file);
       }
     } catch (error) {
@@ -467,58 +468,58 @@ export default function AddProduct() {
     //   console.log(sbOffer)
     setTimeout(() => setLoading(false), 200);
 
-    // // ============ RESET STATES
-    // setProduct({
-    //   title: '',
-    //   code: '',
-    //   quantity: 1,
-    //   quality: 1,
-    //   unit: 'package',
-    //   amount: 1,
-    //   rank: 1,
-    //   scores: 5,
-    //   buyers: 50,
-    //   amazing_Offer: false,
-    //   subCategoryId: '',
-    //   shortDesc: '',
-    //   longDesc: '',
-    //   types: [],
-    //   attributes: [],
-    //   photos: []
-    // });
+    // ============ RESET STATES
+    setProduct({
+      title: '',
+      code: '',
+      quantity: 1,
+      quality: 1,
+      unit: 'package',
+      amount: 1,
+      rank: 1,
+      scores: 5,
+      buyers: 50,
+      amazing_Offer: false,
+      subCategoryId: '',
+      shortDesc: '',
+      longDesc: '',
+      types: [],
+      attributes: [],
+      photos: []
+    });
 
-    // setType50(false);
-    // setType50(false);
-    // setType100(false);
-    // setType250(false);
-    // setType300(false);
-    // setType500(false);
-    // setType1000(false);
-    // setType1200(false);
-    // setTypeOne(false);
-    // setTypePack(false);
+    setType50(false);
+    setType50(false);
+    setType100(false);
+    setType250(false);
+    setType300(false);
+    setType500(false);
+    setType1000(false);
+    setType1200(false);
+    setTypeOne(false);
+    setTypePack(false);
 
-    // setPrice50('');
-    // setPrice100('');
-    // setPrice250('');
-    // setPrice300('');
-    // setPrice500('');
-    // setPrice1000('');
-    // setPrice1200('');
-    // setPriceOne('');
-    // setPricePack('');
+    setPrice50('');
+    setPrice100('');
+    setPrice250('');
+    setPrice300('');
+    setPrice500('');
+    setPrice1000('');
+    setPrice1200('');
+    setPriceOne('');
+    setPricePack('');
 
-    // setInventory('');
+    setInventory('');
 
-    // setAttr1('');
-    // setAttr2('');
-    // setAttr3('');
-    // setAttr4('');
-    // setAttr5('');
+    setAttr1('');
+    setAttr2('');
+    setAttr3('');
+    setAttr4('');
+    setAttr5('');
 
-    // setImages([]);
-    // setImageURLs([]);
-    // window.scrollTo(0, 0);
+    setImages([]);
+    setImageURLs([]);
+    window.scrollTo(0, 0);
   };
 
   return (

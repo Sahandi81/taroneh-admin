@@ -21,6 +21,7 @@ export default async function products(req, res) {
     if (backendRes.ok) {
       res.status(200).json({ data });
     } else {
+      
       res
         .status(backendRes.status)
         .json({ message: data.msg || 'Error in getting products!' });

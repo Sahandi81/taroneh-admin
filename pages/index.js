@@ -30,15 +30,15 @@ export default function Home({ cards }) {
   // console.log()
   // const { data, error, isLoading } =useGetUsersQuery(1, 1);
   // const { data, error, isLoading } =useGetUsersQuery(1, 1);
-      // console.log(data.lastPage)
+      console.log(data)
     let entresObjMonth ;
-    if(data){
+    if(data?.details){
     // const entresObjDay = Object.entries(data?.details.users.day);
-   entresObjMonth = Object.entries(data?.details.users.month);
+   entresObjMonth = Object.entries(data?.details?.users?.month);
   console.log(data,'uiguygtyf',entresObjMonth[entresObjMonth.length -1][1])
-      cards[0].stats = data?.details.users.all_users;
-      cards[1].stats = data?.details.users.today_registered
-      cards[2].stats = data?.details.sales_total_map.today_sales
+      cards[0].stats = data?.details?.users.all_users;
+      cards[1].stats = data?.details?.users.today_registered
+      cards[2].stats = data?.details?.sales_total_map.today_sales
       cards[3].stats = entresObjMonth[ entresObjMonth.length - 1][1]
 }
   return (
@@ -54,7 +54,7 @@ export default function Home({ cards }) {
             محصولات پرفروش
           </h3>
           <div className='w-96 h-96'>
-            {data&&<TopProducts data={data?.details.products_total_map}/>}
+            {data?.details&&<TopProducts data={data?.details.products_total_map}/>}
           </div>
         </div>
         <div className='bg-white rounded shadow-lg shadow-slate-400/10 flex flex-col items-center p-6 h-fit'>

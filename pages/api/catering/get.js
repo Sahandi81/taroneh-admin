@@ -26,7 +26,7 @@ export default async function getCatering(req, res) {
     });
 
     const data = await backendRes.json();
-    console.log(data,'ausihdgsdsat', token, tempProduct)
+    console.log(data,'ausihdgsdsat', token)
     if (backendRes.ok) {
       res.status(200).json({ data });
     } else {

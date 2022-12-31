@@ -43,7 +43,7 @@ export default async function addProduct(req, res) {
     });
 
     const data = await backendRes.json();
-    
+    console.log(tempProduct,data)
     if (backendRes.ok) {
       res.status(200).json({ data });
     } else {

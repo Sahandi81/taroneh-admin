@@ -154,17 +154,17 @@ export default function EditProduct({ product }) {
   // const {details} = useGetCatringQuery();
   // console.log( getCatrings)
   useEffect(async()=>{
-    const backendRes = await fetch(`${API_URL}/api/catering`, {
+    const backendRes = await fetch(`${NEXT_URL}/api/catering/get`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
         "Content-Type": 'application/json'
       }
     });
-
+    
     const catrings = await backendRes.json();
-      // console.log(catrings.data, catrings.data[0].product_id , product._id, )
-      const lengths = catrings.data.filter(el=> el.product_id === product._id);
+      console.log(catrings?.data?.data, product._id )
+      const lengths = catrings?.data?.data?.filter(el=> el.product_id === product._id);
      if(catrings.data && lengths.length > 0){
       setCatering(true)
       setCatringId(lengths[0])
@@ -1045,8 +1045,8 @@ export default function EditProduct({ product }) {
               setSpecialSale(e=>!e);
           }}
            style={{padding:'.5rem 1.8rem', borderRadius:'4px',}}
-           className={!specialSale ?"text-white bg-emerald-400 "
-           :"text-white bg-red-400"}>{!specialSale?" اضافه کردن به فروش ویژه":"حذف از فروش ویژه"}</button>
+           className={specialSale ?"text-white bg-emerald-400 "
+           :"text-white bg-red-400"}>{specialSale?" اضافه کردن به فروش ویژه":"حذف از فروش ویژه"}</button>
            {/* <input type="number" className='bg-red-300 w-30' /> */}
         </div>
         <hr className='lg:row-start-20 lg:col-span-full my-5' />
