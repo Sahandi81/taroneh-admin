@@ -21,7 +21,7 @@ export default async function uploadPhoto(req, res) {
     });
 
     const data = await backendRes.json();
-
+    console.log(data)
     if (backendRes.ok) {
       res.status(200).json({ data });
     } else {

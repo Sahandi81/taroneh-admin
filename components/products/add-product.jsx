@@ -405,10 +405,12 @@ export default function AddProduct() {
         formdata.append('file', images[i].file);
         formdata.append('type', images[i].file.type);
         formdata.append('name', images[i].file.name);
+        // console.log(imageUploadToken)
         const result = await fetch(
-          `${API_URL}/api/upload_photo`,
+          `${API_URL}/api/admin/upload_photo`,
           {
             method: 'POST',
+            // mode:"no-cors",
             headers: {
               Accept: 'application/json',
               Authorization: `Bearer ${imageUploadToken}`
@@ -422,7 +424,9 @@ export default function AddProduct() {
       }
     } catch (error) {
       setTimeout(() => setLoading(false), 200);
-      toast.error(error);
+      console.log(error)
+      toast.error("!!تصویر اپلود نشد");
+      return;
     }
    
     newProduct.photos = uploadedImageNames.slice();
@@ -466,60 +470,60 @@ export default function AddProduct() {
       });
       
     //   console.log(sbOffer)
-    setTimeout(() => setLoading(false), 200);
+    // setTimeout(() => setLoading(false), 200);
 
-    // ============ RESET STATES
-    setProduct({
-      title: '',
-      code: '',
-      quantity: 1,
-      quality: 1,
-      unit: 'package',
-      amount: 1,
-      rank: 1,
-      scores: 5,
-      buyers: 50,
-      amazing_Offer: false,
-      subCategoryId: '',
-      shortDesc: '',
-      longDesc: '',
-      types: [],
-      attributes: [],
-      photos: []
-    });
+    // // ============ RESET STATES
+    // setProduct({
+    //   title: '',
+    //   code: '',
+    //   quantity: 1,
+    //   quality: 1,
+    //   unit: 'package',
+    //   amount: 1,
+    //   rank: 1,
+    //   scores: 5,
+    //   buyers: 50,
+    //   amazing_Offer: false,
+    //   subCategoryId: '',
+    //   shortDesc: '',
+    //   longDesc: '',
+    //   types: [],
+    //   attributes: [],
+    //   photos: []
+    // });
 
-    setType50(false);
-    setType50(false);
-    setType100(false);
-    setType250(false);
-    setType300(false);
-    setType500(false);
-    setType1000(false);
-    setType1200(false);
-    setTypeOne(false);
-    setTypePack(false);
+    // setType50(false);
+    // setType50(false);
+    // setType100(false);
+    // setType250(false);
+    // setType300(false);
+    // setType500(false);
+    // setType1000(false);
+    // setType1200(false);
+    // setTypeOne(false);
+    // setTypePack(false);
 
-    setPrice50('');
-    setPrice100('');
-    setPrice250('');
-    setPrice300('');
-    setPrice500('');
-    setPrice1000('');
-    setPrice1200('');
-    setPriceOne('');
-    setPricePack('');
+    // setPrice50('');
+    // setPrice100('');
+    // setPrice250('');
+    // setPrice300('');
+    // setPrice500('');
+    // setPrice1000('');
+    // setPrice1200('');
+    // setPriceOne('');
+    // setPricePack('');
 
-    setInventory('');
+    // setInventory('');
 
-    setAttr1('');
-    setAttr2('');
-    setAttr3('');
-    setAttr4('');
-    setAttr5('');
+    // setAttr1('');
+    // setAttr2('');
+    // setAttr3('');
+    // setAttr4('');
+    // setAttr5('');
 
-    setImages([]);
-    setImageURLs([]);
-    window.scrollTo(0, 0);
+    // setImages([]);
+    // setImageURLs([]);
+    // window.scrollTo(0, 0);
   };
 
   return (
