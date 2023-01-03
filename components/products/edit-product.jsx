@@ -146,7 +146,8 @@ export default function EditProduct({ product }) {
   const [indexSubCategory, setIndexSubCategory] = useState(0);
   const [amazing, setAmazing]= useState(product.amazing_offer?true:false);
   const [offerShow, setOfferShow]= useState(product?.special_sale?.length > 0 ? true: false);
-  const [specialSale, setSpecialSale]= useState(true);
+  const [specialSale, setSpecialSale]= useState(product?.special_sale?.length > 0 ? true: false);
+
   const [offer, setOffer]= useState(product.amount);
   const imageUploadToken = useSelector(selectUploadImageToken)
   const [catering, setCatering] = useState(false);
@@ -221,7 +222,7 @@ export default function EditProduct({ product }) {
   const addSpecialSaleHandller = (id)=>{
     const data = {
       expire: Date.now() * 1 + 60 * 60 * 60 * 24* 60 * 60 * 1000,
-      percent: currentProduct.amount,
+      percent: offer,
       id: product._id
     }
     addSpecialSale(data).unwrap().then(res=>{
@@ -606,7 +607,8 @@ export default function EditProduct({ product }) {
           }else if(product.offers.length === 0 && offer > 0){
             addOfferHandller();
           }
-
+          
+          console.log(product.special_sale, specialSale)
           if(product.special_sale.length > 0  && !specialSale){
             deleteSpecialSaleHandller(product.special_sale[0]._id)
           }else if( product.special_sale.length === 0 && specialSale ){
@@ -1045,8 +1047,8 @@ export default function EditProduct({ product }) {
               setSpecialSale(e=>!e);
           }}
            style={{padding:'.5rem 1.8rem', borderRadius:'4px',}}
-           className={specialSale ?"text-white bg-emerald-400 "
-           :"text-white bg-red-400"}>{specialSale?" اضافه کردن به فروش ویژه":"حذف از فروش ویژه"}</button>
+           className={!specialSale ?"text-white bg-emerald-400 "
+           :"text-white bg-red-400"}>{!specialSale?" اضافه کردن به فروش ویژه":"حذف از فروش ویژه"}</button>
            {/* <input type="number" className='bg-red-300 w-30' /> */}
         </div>
         <hr className='lg:row-start-20 lg:col-span-full my-5' />

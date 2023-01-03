@@ -83,7 +83,7 @@ export default function Orders({ header,header2,header3 }) {
           code: `#${order.code}`,
           customer: `${ order.f_name?user.f_name:"وارد نشده"} ${order.l_name?user.l_name:""}`,
           price: thousandSeparator(order.final_price),
-          status: order.condition,
+          status: order.condition !== "not_verified"?order.condition:'تایید نشده',
           date: calender(order.created_at)
           //  moment(order.created_at).locale('fa').format('YYYY/MM/DD')
         }))
@@ -183,7 +183,7 @@ export default function Orders({ header,header2,header3 }) {
         handleEdit={handleEditOrder}
         handleDelete={openModel}
         isLoading={isLoading}
-        noDataText={router.pathname !== "/customers"?"کاربری برای نمایش وجود ندارد":'سفارشی برای نمایش وجود ندارد'}
+        noDataText={router.pathname !== "/customers"?"سفارشی برای نمایش وجود ندارد":'سفارشی برای نمایش وجود ندارد'}
         route={router.pathname}
       />
       <div className='flex mr-auto w-fit mt-5 h-11 rounded border'>

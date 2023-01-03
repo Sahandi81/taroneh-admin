@@ -99,13 +99,15 @@ export default function AddProduct() {
   const [addamazingOffer] = useAddAmazingOfferMutation()
   const [catering, setCatering] = useState(false);
   const [specialSale, setSpecialSale] = useState(false);
+  // const [specialeSale_offer, setSpecialeSale_offer] = useState(0)
+
   // const [sbOffer, setsbOffer]= useState({status:false, code:0});
   // const [addOffer, {isload: isLoadingAddOffer}]= useAddOfferMutation();
   // setamazingOffer(e=>!e)
   const amazingOfferHandller =async(id)=>{
         await addamazingOffer({id:id}).unwrap().then((res)=>console.log(res, "add amazingoffer ok"))
   }
- 
+  
   const [addOffer] = useAddOfferMutation();
   const [addCatering] = useAddCateringMutation();
   const [addSpecialSale] = useAddSpecialSaleMutation()
@@ -455,7 +457,7 @@ export default function AddProduct() {
             console.log("addOfferHandller")
           
 
-          if(specialSale){
+          if(specialSale ){
             addSpecialSaleHandller(data.details._id)
             console.log("speii")
 
@@ -928,11 +930,25 @@ export default function AddProduct() {
         <div className='lg:row-start-19'>
           <button type='button' onClick={()=>{
               setSpecialSale(e=>!e);
+              if(specialSale){
+                setSpecialeSale_offer(0)
+              }
           }}
            style={{padding:'.5rem 1.8rem', borderRadius:'4px',}}
            className={!specialSale ?"text-white bg-emerald-400 "
            :"text-white bg-red-400"}>{!specialSale?" اضافه کردن به فروش ویژه":"حذف از فروش ویژه"}</button>
         </div>
+        {/* {specialSale?<div className='lg:row-start-19' style={{marginRight:'2rem',position:'relative'}}>
+          <label htmlFor="specialSalepr" style={{position:'absolute', top:'-1rem', fontSize:'.7rem'}} >درصد تخفیف</label>
+          <input type="number" name='specialSalepr' style={{padding:".5rem"}}
+            className='bg-white  border-2 border-black text-black' 
+            value={specialeSale_offer} onChange={(e)=>{
+              if( 100 > e.target.value > 0)setSpecialeSale_offer(e.target.value)
+            }}
+            min={0} max={100}
+            />
+
+        </div>:null} */}
         <hr className='lg:row-start-19 lg:col-span-full my-5' />
         {/* <div className='lg:row-start-20'>
             <React_star 
