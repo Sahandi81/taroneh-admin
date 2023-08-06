@@ -44,7 +44,7 @@ export default function Products({ header, typeOrWeight }) {
   },[data])
   
   useEffect(async()=>{
-		await axios(`https://api.taroneh.ir/api/products`,{
+		await axios(`https://api.sahandi81.ir/api/products`,{
 			method:'get',
 			headers:{"Content-Type":"application/json"}
 		}).then(res=>console.log(res,'dhuygyds')).catch(er=>console.log('error'))	

@@ -45,7 +45,7 @@ export default function Login() {
         password: password.value
       }).unwrap();
 
-      // let data = await fetch( 'https://api.taroneh.ir/api/admin/login',{
+      // let data = await fetch( 'https://api.sahandi81.ir/api/admin/login',{
       //   method:"POST",
       //   body:JSON.stringify(
       //     {
@@ -71,7 +71,7 @@ export default function Login() {
   //       }
   //       console.log(data);
   //       let token;
-  //       await axios("https://api.taroneh.ir/api/admin/login",{
+  //       await axios("https://api.sahandi81.ir/api/admin/login",{
   //         method:'post',
   //         data:data,
   //         headers:{'Content-Type':'application/json'}
