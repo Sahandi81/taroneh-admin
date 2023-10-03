@@ -1,7 +1,7 @@
-name: CD-Liara-main
+name: CD-Liara-esplay
 on:
   push:
-    branches: [main]
+    branches: [esplay]
 jobs:
   deploy:
     runs-on: ubuntu-latest
