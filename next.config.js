@@ -1,7 +1,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['api.sahandi81.ir'],
+    domains: ['tapi.ydos.ir'],
   },
   eslint: {
     // Warning: This allows production builds to successfully complete even if

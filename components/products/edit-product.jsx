@@ -579,7 +579,7 @@ export default function EditProduct({ product }) {
       // newProduct.photos.map((el, index)=>{
 
           ArrImgRm.map(er=>{
-            er = er.replace('https://api.sahandi81.ir/storage/'+ newProduct.code+'/','')
+            er = er.replace('https://tapi.ydos.ir/storage/'+ newProduct.code+'/','')
             // if(er === el){
               // newProduct.photos.pop(Number(index) )
               newProduct.photos = newProduct.photos.filter(mp=> mp !== er )

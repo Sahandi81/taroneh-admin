@@ -19,7 +19,7 @@ export default async function updateMainOffer(req, res) {
     // formDt.append("expire", offer.expire);
     // formDt.append("precent", offer.precent);
     
-    const backendRes = await fetch(`https://api.sahandi81.ir/api/admin/update_amazing_offer`, {
+    const backendRes = await fetch(`https://tapi.ydos.ir/api/admin/update_amazing_offer`, {
       method: "PUT",
       headers: {
         Accept: 'application/json',
